@@ -1,0 +1,16 @@
+
+@Configuration
+public class AppConfig {
+    @Bean(name = "studentService")
+    public StudentService getStudentService() {
+        StudentServiceImpl studentService = new StudentServiceImpl();
+        studentService.setStudentRepository(getStudentRepository());
+
+        return studentService;
+    }
+
+    @Bean(name = "studentRepository")
+    public StudentRepository getStudentRepository() {
+        return new HibernateStudentRepositoryImpl();
+    }
+}
